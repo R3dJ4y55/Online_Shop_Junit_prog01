@@ -67,7 +67,7 @@ public class SalesItemTest
     }
     
     @Test
-    public void testNegativeRatingRangeBoundaries(){
+    public void testRatingRangeBoundaries(){
         SalesItem i = new SalesItem("Cheap Item", 1);
         assertEquals(false, i.addComment("firstAuthor", "cmmnt", 0));
         assertEquals(false, i.addComment("secondAuthor", "cmmnt", 6));
