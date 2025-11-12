@@ -65,6 +65,13 @@ public class SalesItemTest
         SalesItem salesIte1 = new SalesItem("Java For Complete Idiots, Vol 2", 19900);
         assertEquals(false, salesIte1.addComment("Joshua Black", "Not worth the money. The font is too small.", -5));
     }
+    
+    @Test
+    public void testNegativeRatingRangeBoundaries(){
+        SalesItem i = new SalesItem("Cheap Item", 1);
+        assertEquals(false, i.addComment("firstAuthor", "cmmnt", 0));
+        assertEquals(false, i.addComment("secondAuthor", "cmmnt", 6));
+    }
 
     /**
      * Test that a sales item is correctly initialised (name and price).
