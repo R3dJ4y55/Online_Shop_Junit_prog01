@@ -48,6 +48,13 @@ public class SalesItemTest
         assertEquals(true, salesIte1.addComment("James Duckling", "This book is great. I perform brain surgery every week now.", 4));
         assertEquals(1, salesIte1.getNumberOfComments());
     }
+    
+    @Test
+    public void testDuplicateComment(){
+        SalesItem item = new SalesItem("Cool Item", 10);
+        item.addComment("author", "comment", 3);
+        assertEquals(false, item.addComment("author", "Other comment", 4));
+    }
 
     /**
      * Test that a comment using an illegal rating value is rejected.
