@@ -76,7 +76,7 @@ public class SalesItemTest
     @Test
     public void testFindMostHelpfulComment(){
         SalesItem item = new SalesItem("Item", 10);
-        
+                
         // Initialise comments
         item.addComment("Auth1", "Text", 1);
         item.addComment("Helpful", "Text", 4);
@@ -91,6 +91,36 @@ public class SalesItemTest
         
         assertEquals(item.getComment(1), item.findMostHelpfulComment());
     }
+    
+    @Test
+    public void testFindCommentByAuthor(){
+        SalesItem i = new SalesItem("Item", 9);
+        i.addComment("Bon", "Txt", 3);
+        
+        assertEquals(i.getComment(0), i.findCommentByAuthor("Bon"));
+    }
+    
+    @Test
+    public void testGetPrice(){
+        SalesItem i1 = new SalesItem("i", 10);
+        SalesItem i2 = new SalesItem("i", 300);
+        SalesItem i3 = new SalesItem("i", 1894);
+        
+        assertEquals(10, i1.getPrice());
+        assertEquals(300, i2.getPrice());
+        assertEquals(1894, i3.getPrice());
+    }
+    
+    @Test
+    public void testPriceString(){
+        SalesItem item1 = new SalesItem("Item", 9);
+        SalesItem item2 = new SalesItem("Item", 101);
+        SalesItem item3 = new SalesItem("Item", 131);
+        
+        assertEquals("$0.09", item1.priceString(item1.getPrice()));
+        assertEquals("$1.01", item2.priceString(item2.getPrice()));
+        assertEquals("$1.31", item3.priceString(item3.getPrice()));
+    }
 
     /**
      * Test that a sales item is correctly initialised (name and price).
@@ -102,4 +132,5 @@ public class SalesItemTest
         assertEquals("test name", salesIte1.getName());
         assertEquals(1000, salesIte1.getPrice());
     }
+    
 }

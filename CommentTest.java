@@ -47,7 +47,18 @@ public class CommentTest
         c.downvote();
         assertEquals(-1, c.getVoteCount());
     }
-
+    
+    @Test
+    public void testGetRating(){
+        Comment c1 = new Comment("auth", "t", 4);
+        Comment c2 = new Comment("auth", "t", 1);
+        Comment c3 = new Comment("auth", "t", 5);
+        
+        assertEquals(4, c1.getRating());
+        assertEquals(1, c2.getRating());
+        assertEquals(5, c3.getRating());
+    }
+    
     /**
      * Sets up the test fixture.
      *

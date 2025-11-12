@@ -160,7 +160,7 @@ public class SalesItem
      * Find the comment by the author with the given name.
      * @return The comment if it exists; null if it doesn't.
      */
-    private Comment findCommentByAuthor(String author)
+    public Comment findCommentByAuthor(String author)
     {
         for(Comment comment : comments) {
             if(comment.getAuthor().equals(author)) {
@@ -175,7 +175,7 @@ public class SalesItem
      * same price. The price is given in whole cents. For example for 
      * price==12345, the following String is returned: $123.45
      */
-    private String priceString(int price)
+    public String priceString(int price)
     {
         int dollars = price / 100;
         int cents = price - (dollars*100);
