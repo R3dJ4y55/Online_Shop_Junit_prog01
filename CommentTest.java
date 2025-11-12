@@ -13,11 +13,39 @@ import org.junit.jupiter.api.Test;
  */
 public class CommentTest
 {
+    
     /**
      * Default constructor for test class CommentTest
      */
     public CommentTest()
     {
+        
+    }
+    
+    /**
+     * Tests to see if the values for author and rating are stored correctly
+     */
+    @Test
+    public void testFieldValues(){
+        Comment c = new Comment("Bon Jovi", "Great product!", 4);
+        assertEquals("Bon Jovi", c.getAuthor());
+        assertEquals(4, c.getRating());
+    }
+    
+    @Test
+    public void testUpvotes(){
+        Comment c = new Comment("Helpful Customer", "Helpful Description", 4);
+        assertEquals(0, c.getVoteCount());
+        c.upvote();
+        assertEquals(1, c.getVoteCount());
+    }
+    
+    @Test
+    public void testDownvotes(){
+        Comment c = new Comment ("Unhelpful customer", "unhelpful comment", 4);
+        assertEquals(0, c.getVoteCount());
+        c.downvote();
+        assertEquals(-1, c.getVoteCount());
     }
 
     /**

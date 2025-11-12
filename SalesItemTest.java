@@ -72,6 +72,25 @@ public class SalesItemTest
         assertEquals(false, i.addComment("firstAuthor", "cmmnt", 0));
         assertEquals(false, i.addComment("secondAuthor", "cmmnt", 6));
     }
+    
+    @Test
+    public void testFindMostHelpfulComment(){
+        SalesItem item = new SalesItem("Item", 10);
+        
+        // Initialise comments
+        item.addComment("Auth1", "Text", 1);
+        item.addComment("Helpful", "Text", 4);
+        item.addComment("Auth3", "Text", 2);
+        
+        for (int i=0; i<10; i++){
+            item.upvoteComment(1);
+        }
+        for(int i = 0; i<3; i++){
+            item.downvoteComment(2);
+        }
+        
+        assertEquals(item.getComment(1), item.findMostHelpfulComment());
+    }
 
     /**
      * Test that a sales item is correctly initialised (name and price).
